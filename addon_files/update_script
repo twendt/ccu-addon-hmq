@@ -1,0 +1,31 @@
+#!/bin/sh
+
+ADDONS_DIR=/usr/local/addons
+HMQ_DIR=$ADDONS_DIR/hmq
+
+
+BIN_DIR=/usr/local/bin
+LIB_DIR=/usr/local/lib
+CONF_DIR=/usr/local/etc/config
+
+mount | grep /usr/local 2>&1 >/dev/null
+if [ $? -eq 1 ]; then
+  mount /usr/local
+fi
+
+mkdir -p $ADDONS_DIR && chmod 755 $ADDONS_DIR 
+
+if [ -f $CONF_DIR/rc.d/hmq ]; then
+    $CONF_DIR/rc.d/hmq stop
+fi
+
+cp -af hmq $ADDONS_DIR/
+
+ln -sf $HMQ_DIR/rc.d/hmq $CONF_DIR/rc.d/hmq
+ln -sf $HMQ_DIR/www $CONF_DIR/addons/www/hmq
+
+# Migration
+
+/etc/config/rc.d/hmq restart
+
+exit 0
