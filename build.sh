@@ -13,7 +13,7 @@ cp -r $ADDON_FILES/* $ADDON_TMP/
 cd $BUILD_DIR
 
 
-ADDON_FILE=hmq-1.4.tar.gz
+ADDON_FILE=hmq-master-20200826-b8bacb4.tar.gz
 echo "compressing addon package $ADDON_FILE ..."
 
 mkdir $BUILD_DIR/dist 2> /dev/null
