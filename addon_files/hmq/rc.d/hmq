@@ -33,7 +33,7 @@ case "$1" in
 
   info)
     echo "Info: <center><a href=\"https://github.com/fhmq/hmq\" target=\"_blank\">hmq MQTT Broker addon</a></center>"
-    echo "Name: hmq MQTT Server"
+    echo "Name: hmq MQTT broker"
     echo "Version: 1.4"
     echo "Update: /addons/hmq/update_check.cgi"
     echo "Operations: uninstall restart"
