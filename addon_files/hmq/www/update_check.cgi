@@ -14,10 +14,11 @@ catch {
 }
 
 if { [info exists cmd ] && $cmd == "download"} {
+  puts -nonewline "Content-Type: text/html; charset=utf-8\r\n\r\n"
   puts "<html><head><meta http-equiv='refresh' content='0; url=$downloadURL' /></head></html>"
 } else {
   catch {
-    [regexp "tag_name\": \"(master-\[0-9\]\{8\}-\[a-f0-9\]\{7\})" [ exec /usr/bin/env wget -qO- --no-check-certificate $checkURL ] dummy newversion]
+    [regexp "tag_name\": \"(master-\[0-9\]\{8\}-\[a-f0-9\]\{7\}-?\[0-9\]*)" [ exec /usr/bin/env wget -qO- --no-check-certificate $checkURL ] dummy newversion]
   }
   if { [info exists newversion] } {
     puts -nonewline $newversion
